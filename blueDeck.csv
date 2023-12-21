@@ -1,6 +1,42 @@
-name,value
-ferrets,0
-crashed tree,1
-fallen log,2
-dog,3
-ambush,2
+name,resource1,resource2,resource3,penalty,resource4,resource5,resource6
+Storm Outside,WOOD,METAL,FOOD,FURFOOD,,,
+Storm Outside,WOOD,METAL,FOOD,FURFOOD,,,
+Berry Bush,WOOD,FOOD,
+Berry Bush,WOOD,FOOD,
+Snow Covered Tree,WOOD,WOOD,LOST
+Snow Covered Tree,WOOD,WOOD,LOST
+Poisoned Carcass,FURS,METAL,,TWOBLOOD
+Poisoned Carcass,FURS,METAL,,TWOBLOOD
+Old Mine,WOOD,METAL,
+Old Mine,WOOD,METAL,
+Old Mine,WOOD,METAL,
+Old Mine,WOOD,METAL,
+Ferrets,FURS,FURS,,LOST
+Ferrets,FURS,FURS,,LOST
+Trapped Scrap,METAL,FOOD,,ANY
+Trapped Scrap,METAL,FOOD,,ANY
+Laying in Ambush,FOOD,FOOD,,LOST,FURS,FURS
+Laying in Ambush,FOOD,FOOD,,LOST,FURS,FURS
+Dead Brush,WOOD,WOOD,,BLOOD
+Dead Brush,WOOD,WOOD,,BLOOD
+Warren Pothole,FOOD,FURS,,ANY
+Warren Pothole,FOOD,FURS,,ANY
+Scraps,WOOD,,,,METAL
+Scraps,WOOD,,,,METAL
+Rotted Bear,FURS,FURS
+Rotted Bear,FURS,FURS
+Woodcut,WOOD,WOOD
+Woodcut,WOOD,WOOD
+Cornered Fox,FOOD,FOOD,,BLOOD
+Cornered Fox,FOOD,FOOD,,BLOOD
+Buried Supplies,WOOD,WOOD,,BLOOD,METAL,FURS
+Buried Supplies,WOOD,WOOD,,BLOOD,METAL,FURS
+Injured Boar,FOOD,METAL,,BLOOD
+Injured Boar,FOOD,METAL,,BLOOD
+Chasing Rabbits,FOOD,FOOD,,LOST
+Chasing Rabbits,FOOD,FOOD,,LOST
+Lone Wolf,FOOD,FURS,,BLOOD
+Lone Wolf,FOOD,FURS,,BLOOD
+Clearing,WOOD
+Clearing,WOOD
+

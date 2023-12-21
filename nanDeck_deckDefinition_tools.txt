@@ -1,0 +1,69 @@
+dpi=300
+oversample=2
+[all]=1-5
+[allbacks]=6-10
+[darkest]=#182d41
+[darker]=#20486c
+[dark]=#2c577d
+[light]=#487297
+[lighter]=#8facc7
+[darkgrey]=#494949
+[grey]=#636363
+[lightgrey]=#8a8a8a
+[textcolor]=#757575
+PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,41-80
+border=rounded, [darkest], 0.5
+rectangle=[all],0,0,100%,100%,[darker]
+;Image of the tool
+[xtool]=1.2
+[ytool]=2
+[cwidth]=3.5
+image=1, image_pickaxe.png, [xtool], [ytool], [cwidth], [cwidth]
+image=2, icon_clothes_tool.png, [xtool], [ytool], [cwidth], [cwidth]
+image=3, image_trap.png, [xtool], [ytool], [cwidth], [cwidth]
+image=4, image_bowarrow.png, [xtool], [ytool], [cwidth], [cwidth]
+image=5, image_axe.png, [xtool], [ytool], [cwidth], [cwidth]
+;rectangle behind text
+roundrect=[all],0.5,0.64,5,1,[lighter]
+;corner image of the tool
+[xctool]=0.4
+[yctool]=0.4
+[ccwidth]=1.5
+image=1, image_pickaxe.png, [xctool], [yctool], [ccwidth], [ccwidth]
+image=2, icon_clothes_tool.png, [xctool], [yctool], [ccwidth], [ccwidth]
+image=3, image_trap.png, [xctool], [yctool], [ccwidth], [ccwidth]
+image=4, image_bowarrow.png, [xctool], [yctool], [ccwidth], [ccwidth]
+image=5, image_axe.png, [xctool], [yctool], [ccwidth], [ccwidth]
+;Name of the tool
+[xtext]=2.2
+[ytext]=0.15
+[xwtext]=3
+[ywtext]=2
+font= "arial", 18, TB, [darkgrey]
+text = 1, "Pickaxe",[xtext],[ytext],[xwtext],[ywtext],center,center
+text = 2, "Clothes",[xtext],[ytext],[xwtext],[ywtext],center,center
+text = 3, "Snares",[xtext],[ytext],[xwtext],[ywtext],center,center
+font= "arial", 12, TB, [darkgrey]
+text = 4, "Bow & Arrows",[xtext],[ytext],[xwtext],[ywtext],center,center
+font= "arial", 18, TB, [darkgrey]
+text = 5, "Axe",[xtext],[ytext],[xwtext],[ywtext],center,center
+;The costs of the tools
+[xcost1]=1.2
+[xcost2]=2.65
+[ycost]=6
+[size]=2
+image=1, image_nometal.png, [xcost1],[ycost],[size],[size]
+image=1, image_nowood.png,  [xcost2],[ycost],[size],[size]
+image=2, image_nofurs.png,  [xcost1],[ycost],[size],[size]
+image=2, image_nofurs.png,  [xcost2],[ycost],[size],[size]
+image=3, image_nofood.png,  [xcost1],[ycost],[size],[size]
+image=3, image_nometal.png, [xcost2],[ycost],[size],[size]
+image=4, image_nometal.png, [xcost1],[ycost],[size],[size]
+image=4, image_nowood.png,  [xcost2],[ycost],[size],[size]
+image=5, image_nometal.png, [xcost1],[ycost],[size],[size]
+image=5, image_nowood.png,  [xcost2],[ycost],[size],[size]
+;The backs of the tools
+rectangle=[allbacks],0,0,100%,100%,[darker]
+image=[allbacks], image_tools.png, 1.45, 0.5, 3, 8
+duplex=[all],[allbacks]
+Print=duplex

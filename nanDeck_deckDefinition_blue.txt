@@ -1,4 +1,4 @@
-link=greenDeck.csv,name,resource1,resource2,resource3,penalty,resource4,resource5,resource6
+link=blueDeck.csv,name,resource1,resource2,resource3,penalty,resource4,resource5,resource6
 macro=resource,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
     if = (resourceValue) = "WOOD"
         image=(cardNum),image_wood.png, (x),(y),(xwidth),(ywidth)
@@ -25,25 +25,25 @@ macro=penalty,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
 end
 dpi=300
 oversample=2
-[all]=1-20
-[allbacks]=21-40
-[darkest]=#445b33
-[darker]=#4e683a
-[dark]=#2d7553
-[light]=#719383
-[lighter]=#a2e1c3
+[all]=1-40
+[allbacks]=41-80
+[darkest]=#182d41
+[darker]=#20486c
+[dark]=#2c577d
+[light]=#487297
+[lighter]=#8facc7
 [darkgrey]=#494949
 [grey]=#636363
 [lightgrey]=#8a8a8a
 [textcolor]=#757575
-PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
+PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,41-80
 border=rounded, [darkest], 0.5
 rectangle=[all],0,0,100%,100%,[darker]
 POLYGON = [all], 0, 0.5, 6, 6, 4, -23, [light], [light], 0.1
 roundrect=[all],0.8,1,0.1,4, [lighter],[lighter],1,3,3
-font= "arial", 15, TB, [textcolor]
+font= "arial", 13, TB, [textcolor]
 text = [all], [name],-0.05,0.8,1.7,4.5,center,center,-90
-penalty=[penalty],[all],2,6.7,2,2
+penalty=[penalty],[all],2,6.4,2,2
 if = _NOT_ ([resource1] = "")
     roundrect=[all],2.0,5,3,0.1,[dark],[dark],1,3,3
 endif
@@ -60,5 +60,5 @@ resource=[resource6],[all],2.55,5.9,0.7,0.7
 rectangle=[allbacks],0,0,100%,100%,[darkgrey]
 POLYGON = [allbacks], 0, 0.5, 6, 6, 4, 0, [grey], [grey], 0.1
 image=[allbacks], image_E.png, 0.5, 1, 5, 5
-duplex=[all],[allbacks]
+duplex=1-40,41-80
 Print=duplex
