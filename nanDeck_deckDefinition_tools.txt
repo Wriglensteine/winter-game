@@ -1,7 +1,7 @@
 dpi=300
 oversample=2
-[all]=1-5
-[allbacks]=6-10
+[all]=1-10
+[allbacks]=11-20
 [darkest]=#182d41
 [darker]=#20486c
 [dark]=#2c577d
@@ -67,3 +67,5 @@ rectangle=[allbacks],0,0,100%,100%,[darker]
 image=[allbacks], image_tools.png, 1.45, 0.5, 3, 8
 duplex=[all],[allbacks]
 Print=duplex
+display=./card_outputs_tools_fronts.png,1,10
+display=./card_outputs_tools_backs.png,11,20
