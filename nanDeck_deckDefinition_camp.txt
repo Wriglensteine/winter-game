@@ -92,3 +92,5 @@ text = [allbacks], [name],0.05,0.65,5,1,center,center
 
 duplex=[all],[allbacks]
 Print=duplex
+display=./card_outputs_camp_fronts.png,1,9
+display=./card_outputs_camp_backs.png,10,18
