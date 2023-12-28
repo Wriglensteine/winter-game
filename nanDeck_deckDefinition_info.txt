@@ -31,5 +31,5 @@ text = 2, "Evening",7%,8%,90%,90%,left,wwtop
 font= "arial", 9,BT, [textcolor]
 text = 2, "The expedition returns with acquired resources.\13\The group decides on how much wood to put on the fire. Each counters one Frost from the weather and additional remove existing Frost tokens. The first wood triggers a free use of the Camps's Filterer.\13\The group then distributes food, and water. Any character not fed gains Hunger, and any not given water gains Thirst.\13\Characters then gain 1 health minus 1 for each Weakness token they possess. They die if their health reaches the red drop.",7%,14%,90%,90%,left,wwtop
 
-display=./cards_info_output_fronts.png,1
-display=./cards_info_output_backs.png,2
+display=./cards_info_output_fronts.png,1,1
+display=./cards_info_output_backs.png,2,2
