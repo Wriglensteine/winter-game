@@ -16,5 +16,10 @@ CARDSIZE= 21, 13.5
 image=[all],board_characterSheet.png,0,0,100%,100%
 font= "arial", 11,BT, [textcolor]
 text=[all],[text1],15%,3%,20%,40%,left,wwtop
-image=1-2,image_characterPortrait.png,75%,5%,20%,20%
-image=3-4,image_characterPortrait_male.png,75%,5%,20%,20%
+image=1-2,image_characterPortrait.png,76%,12%,20%,32.8%
+image=3-4,image_characterPortrait_male.png,77%,12%,20%,32.8%
+
+display=./board_characterSheet_woman1.png,1,1
+display=./board_characterSheet_woman2.png,2,2
+display=./board_characterSheet_man1.png,3,3
+display=./board_characterSheet_man2.png,4,4

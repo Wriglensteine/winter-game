@@ -38,7 +38,7 @@ oversample=2
 [textcolor]=#757575
 PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
 border=rounded, [darkest], 0.5
-image=[all],green_card_base.png,0,0,100%,100%
+image=[all],green_card_base3.png,0,0,100%,100%
 
 roundrect=[all],0.8,1,0.1,4, [lighter],[lighter],1,3,3
 font= "arial", 15, TB, [textcolor]
