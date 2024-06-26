@@ -1,42 +1,42 @@
 name,resource1,resource2,resource3,penalty,resource4,resource5,resource6
-Storm Outside,WOOD,METAL,FOOD,FURFOOD,,,
-Storm Outside,WOOD,METAL,FOOD,FURFOOD,,,
-Berry Bush,WOOD,FOOD,
-Berry Bush,WOOD,FOOD,
-Snow Covered Tree,WOOD,WOOD,LOST
-Snow Covered Tree,WOOD,WOOD,LOST
-Poisoned Carcass,FURS,METAL,,TWOBLOOD
-Poisoned Carcass,FURS,METAL,,TWOBLOOD
-Old Mine,WOOD,METAL,
-Old Mine,WOOD,METAL,
-Old Mine,WOOD,METAL,
-Old Mine,WOOD,METAL,
-Ferrets,FURS,FURS,,LOST
-Ferrets,FURS,FURS,,LOST
-Trapped Scrap,METAL,FOOD,,ANY
-Trapped Scrap,METAL,FOOD,,ANY
-Laying in Ambush,FOOD,FOOD,,LOST,FURS,FURS
-Laying in Ambush,FOOD,FOOD,,LOST,FURS,FURS
-Dead Brush,WOOD,WOOD,,BLOOD
-Dead Brush,WOOD,WOOD,,BLOOD
-Warren Pothole,FOOD,FURS,,ANY
-Warren Pothole,FOOD,FURS,,ANY
-Scraps,WOOD,,,,METAL
-Scraps,WOOD,,,,METAL
-Rotted Bear,FURS,FURS
-Rotted Bear,FURS,FURS
-Woodcut,WOOD,WOOD
-Woodcut,WOOD,WOOD
-Cornered Fox,FOOD,FOOD,,BLOOD
-Cornered Fox,FOOD,FOOD,,BLOOD
-Buried Supplies,WOOD,WOOD,,BLOOD,METAL,FURS
-Buried Supplies,WOOD,WOOD,,BLOOD,METAL,FURS
-Injured Boar,FOOD,METAL,,BLOOD
-Injured Boar,FOOD,METAL,,BLOOD
-Chasing Rabbits,FOOD,FOOD,,LOST
-Chasing Rabbits,FOOD,FOOD,,LOST
-Lone Wolf,FOOD,FURS,,BLOOD
-Lone Wolf,FOOD,FURS,,BLOOD
-Clearing,WOOD
-Clearing,WOOD
+Storm Outside,WD,MT,FD,FF,,,
+Storm Outside,WD,MT,FD,FF,,,
+Berry Bush,WD,FD,
+Berry Bush,WD,FD,
+Snow Covered Tree,WD,WD,,LT
+Snow Covered Tree,WD,WD,,LT
+Poisoned Carcass,FR,MT,,TB
+Poisoned Carcass,FR,MT,,TB
+Old Mine,WD,MT,
+Old Mine,WD,MT,
+Old Mine,WD,MT,
+Old Mine,WD,MT,
+Ferrets,FR,FR,,LT
+Ferrets,FR,FR,,LT
+Trapped Scrap,MT,FD,,AN
+Trapped Scrap,MT,FD,,AN
+Laying in Ambush,FD,FD,,LT,FR,FR
+Laying in Ambush,FD,FD,,LT,FR,FR
+Dead Brush,WD,WD,,BD
+Dead Brush,WD,WD,,BD
+Warren Pothole,FD,FR,,AN
+Warren Pothole,FD,FR,,AN
+Scraps,WD,,,,MT
+Scraps,WD,,,,MT
+Rotted Bear,FR,FR
+Rotted Bear,FR,FR
+Woodcut,WD,WD
+Woodcut,WD,WD
+Cornered Fox,FD,FD,,BD
+Cornered Fox,FD,FD,,BD
+Buried Supplies,WD,WD,,BD,MT,FR
+Buried Supplies,WD,WD,,BD,MT,FR
+Injured Boar,FD,MT,,BD
+Injured Boar,FD,MT,,BD
+Chasing Rabbits,FD,FD,,LT
+Chasing Rabbits,FD,FD,,LT
+Lone Wolf,FD,FR,,BD
+Lone Wolf,FD,FR,,BD
+Clearing,WD
+Clearing,WD
 

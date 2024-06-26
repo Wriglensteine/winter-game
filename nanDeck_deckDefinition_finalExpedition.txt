@@ -1,0 +1,103 @@
+link=finalExpeditionDeck.csv,name,penalty1,penalty2,orpenalty3,orpenalty4
+macro=gain,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceValue) = "WOOD"
+        image=(cardNum),image_wood.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "METAL"
+        image=(cardNum),image_metal.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "FURS"
+        image=(cardNum),image_furs.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "FOOD"
+        image=(cardNum),image_food.png, (x),(y),(xwidth),(ywidth)
+    endif
+    ; add an up arrow signifying gain whatever the item
+end
+macro=lose,(playersEffected), (resourceType),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceType) = "AX"
+        image=(cardNum),image_axe.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "BW"
+        image=(cardNum),image_bowarrow.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "CS"
+        image=(cardNum),icon_clothes_tool.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "TL"
+        image=(cardNum),image_telescope.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "BG"
+        image=(cardNum),image_bag.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "MP"
+        image=(cardNum),image_map.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "FD"
+        image=(cardNum),image_food.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "FR"
+        image=(cardNum),image_furs.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "MT"
+        image=(cardNum),image_metal.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "WD"
+        image=(cardNum),image_wood.png, (x),(y),(xwidth),(ywidth)
+    endif
+    ; add a down arrow signifying loss over the top whatever the item
+    image=(cardNum),icon_loss.png, {(x)-0.5}, {(y)+0.67}, {(xwidth)*0.5},{(ywidth)*0.5}
+    ; add icon marking number of players taking the effect
+    if = _NOT_ ((playersEffected) = "0")
+        image=(cardNum),icon_players_black.png, {(x)+0.9},{(y)+1.2},{(xwidth)*0.55},{(ywidth)*0.4}
+    endif
+end
+dpi=300
+oversample=2
+
+[numCards]=7
+[all]=1-[numCards]
+[allbacks]={[numCards]+1}-{[numCards]*2}
+[darkest]=#182d41
+[darker]=#20486c
+[dark]=#683535
+[light]=#8facc7
+[lighter]=#8facc7
+[darkgrey]=#182d41
+[grey]=#20486c
+[lightgrey]=#8a8a8a
+[textcolor]=[darker]
+
+PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
+CARDSIZE=6.3,8.8
+
+border=rounded, [darkest], 0.5
+image=[all],final_expedition_card_base.png,0,0,100%,100%
+
+roundrect=[all],1,0.8,4,0.1, [lighter],[lighter],1,3,3
+font= "arial", 15,BT, [textcolor]
+text = [all], [name],1,0.53,4,0.6,center,center,0
+
+roundrect=[all],1,4.1,6,1.2, [darker],[darker],1,3,3
+[players]=[penalty1:1,1]
+[type]=[penalty1:2,2]
+if = _NOT_ ([penalty1] = "")
+    lose=[players], [type],[all],1,3.7,2,2
+endif
+[players]=[penalty2:1,1]
+[type]=[penalty2:2,2]
+if = _NOT_ ([penalty2] = "")
+    lose=[players], [type],[all],3.7,3.7,2,2
+endif
+roundrect=[all],-0.7,6.6,6,1.2, [darker],[darker],1,3,3
+[players]=[orpenalty3:1,1]
+[type]=[orpenalty3:2,2]
+if = _NOT_ ([orpenalty3] = "")
+    lose=[players], [type],[all],1,6.2,2,2
+endif
+[players]=[orpenalty4:1,1]
+[type]=[orpenalty4:2,2]
+if = _NOT_ ([orpenalty4] = "")
+    lose=[players], [type],[all],3.7,6.2,2,2
+endif
+
+; back of cards and returns
+rectangle=[allbacks],0,0,100%,100%,[darkgrey]
+POLYGON = [allbacks], 0, 0.5, 6, 6, 4, 0, [grey], [grey], 0.1
+image=[allbacks], image_F.png, 1, 0.1, 4, 4
+image=[allbacks], image_E.png, 1, 2.9, 4, 4
+duplex=1-7, 8-14
+Print=duplex
+display=./cards_final_expedition_output_fronts.png,1,[numCards]
+display=./cards_final_expedition_output_backs.png,{[numCards]+1},{[numCards]*2}
+
+; save cards with bleed
+save=[all], "./cards_numbered/card_final_expedition{§}.png", 0, 0, 6.3, 8.8

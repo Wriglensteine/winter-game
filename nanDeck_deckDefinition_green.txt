@@ -1,30 +1,47 @@
 link=greenDeck.csv,name,resource1,resource2,resource3,penalty,resource4,resource5,resource6
-macro=resource,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
-    if = (resourceValue) = "WOOD"
+macro=gain,(playersEffected), (resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceValue) = "WD"
         image=(cardNum),image_wood.png, (x),(y),(xwidth),(ywidth)
-    elseif = (resourceValue) = "METAL"
+    elseif = (resourceValue) = "MT"
         image=(cardNum),image_metal.png, (x),(y),(xwidth),(ywidth)
-    elseif = (resourceValue) = "FURS"
+    elseif = (resourceValue) = "FR"
         image=(cardNum),image_furs.png, (x),(y),(xwidth),(ywidth)
-    elseif = (resourceValue) = "FOOD"
+    elseif = (resourceValue) = "FD"
         image=(cardNum),image_food.png, (x),(y),(xwidth),(ywidth)
     endif
+    ; add a down arrow signifying loss over the top whatever the item
+    if = _NOT_ ((resourceValue) = "")
+        image=(cardNum),icon_gain.png, {(x)-0.0}, {(y)+0.25}, {(xwidth)*0.5},{(ywidth)*0.5}
+    endif
+    ; add icon marking number of players taking the effect
+    if = _NOT_ ((playersEffected) = "0")
+        image=(cardNum),icon_players_black.png, {(x)+1.4},{(y)+0.6},{(xwidth)*0.55},{(ywidth)*0.4}
+    endif
 end
-macro=penalty,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
-    if = (resourceValue) = "LOST"
+macro=lose,(playersEffected), (resourceType),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceType) = "LT"
         image=(cardNum),token_lost.png, (x),(y),(xwidth),(ywidth)
-    elseif = (resourceValue) = "BLOOD"
+    elseif = (resourceType) = "BD"
         image=(cardNum),image_blood.png, (x),(y),(xwidth),(ywidth)
-    elseif = (resourceValue) = "TWOBLOOD"
+    elseif = (resourceType) = "TB"
         image=(cardNum),image_twoblood.png, (x),(y),(xwidth),(ywidth)
-    elseif = (resourceValue) = "ANY"
+    elseif = (resourceType) = "AN"
         image=(cardNum),image_any.png, (x),(y),(xwidth),(ywidth)
-    elseif = (resourceValue) = "FURFOOD"
+    elseif = (resourceType) = "FF"
         image=(cardNum),image_furfood.png, (x),(y),(xwidth),(ywidth)
+    endif
+    ; add a down arrow signifying loss over the top whatever the item
+    if = _NOT_ ((resourceType) = "")
+        image=(cardNum),icon_loss.png, {(x)-0.5}, {(y)+0.67}, {(xwidth)*0.5},{(ywidth)*0.5}
+    endif
+    ; add icon marking number of players taking the effect
+    if = _NOT_ ((playersEffected) = "0")
+        image=(cardNum),icon_players_black.png, {(x)+0.9},{(y)+1.2},{(xwidth)*0.55},{(ywidth)*0.4}
     endif
 end
 dpi=300
 oversample=2
+
 [all]=1-20
 [allbacks]=21-40
 [darkest]=#445b33
@@ -36,31 +53,40 @@ oversample=2
 [grey]=#636363
 [lightgrey]=#8a8a8a
 [textcolor]=#757575
+
 PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
+CARDSIZE=6.3,8.8
+
 border=rounded, [darkest], 0.5
-image=[all],green_card_base3.png,0,0,100%,100%
+image=[all],green_card_base4.png,0,0,100%,100%
 
 roundrect=[all],0.8,1,0.1,4, [lighter],[lighter],1,3,3
 font= "arial", 15, TB, [textcolor]
 text = [all], [name],-0.05,0.8,1.7,4.5,center,center,-90
-penalty=[penalty],[all],2,6.7,2,2
+loss=0, [penalty],[all],2,6.7,2,2
+
 if = _NOT_ ([resource1] = "")
     roundrect=[all],2.0,5,3,0.1,[dark],[dark],1,3,3
 endif
 if = _NOT_ ([resource4] = "")
     roundrect=[all],1.3,6.2,3,0.1,[dark],[dark],1,3,3
 endif
-resource=[resource1],[all],1.75,4.7,0.7,0.7
-resource=[resource2],[all],2.5,4.7,0.7,0.7
-resource=[resource3],[all],3.25,4.7,0.7,0.7
-resource=[resource4],[all],1.05,5.9,0.7,0.7
-resource=[resource5],[all],1.8,5.9,0.7,0.7
-resource=[resource6],[all],2.55,5.9,0.7,0.7
 
+gain=0, [resource1],[all],1.75,4.7,0.7,0.7
+gain=0, [resource2],[all],2.5,4.7,0.7,0.7
+gain=0, [resource3],[all],3.25,4.7,0.7,0.7
+gain=0, [resource4],[all],1.05,5.9,0.7,0.7
+gain=0, [resource5],[all],1.8,5.9,0.7,0.7
+gain=0, [resource6],[all],2.55,5.9,0.7,0.7
+
+; back of cards and returns
 rectangle=[allbacks],0,0,100%,100%,[darkgrey]
 POLYGON = [allbacks], 0, 0.5, 6, 6, 4, 0, [grey], [grey], 0.1
 image=[allbacks], image_E.png, 0.5, 1, 5, 5
-duplex=[all],[allbacks]
+duplex=1-20,21-40
 Print=duplex
 display=./cards_green_output_fronts.png,1,20
 display=./cards_green_output_backs.png,21,40
+
+; save cards with bleed
+save=[all], "./cards_numbered/card_green{§}.png", 0, 0, 6.3, 8.8

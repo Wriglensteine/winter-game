@@ -1,0 +1,7 @@
+name,file,cost1,cost2,description
+Bow,image_bowarrow.png,WD,MT,When encountering an animal gain 1 Food, or Lose 1 less health
+Axe,image_axe.png,WD,MT,On reveal of the fourth Expedition card gain 1 of any resource
+Telescope,image_telescope.png,MT,MT,May peek at one unrevealed card per Expedition
+Map,image_map.png,WD,FR,Draw 1 Blue card at Expedition start. May swap it for a revealed Blue or Green card one time per Expedition
+Warm Clothes,icon_clothes_tool.png,FR,FR,Lose 1 Frost per night
+Bag,image_bag.png,FR,FR,Increase carry capacity by 1

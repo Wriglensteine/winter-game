@@ -1,7 +1,52 @@
+link=nanDeck_deckDefinition_tools.csv,name,file,cost1,cost2,description
+macro=gain,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceValue) = "WOOD"
+        image=(cardNum),image_wood.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "METAL"
+        image=(cardNum),image_metal.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "FURS"
+        image=(cardNum),image_furs.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "FOOD"
+        image=(cardNum),image_food.png, (x),(y),(xwidth),(ywidth)
+    endif
+    ; add an up arrow signifying gain whatever the item
+end
+macro=lose,(playersEffected), (resourceType),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceType) = "AX"
+        image=(cardNum),image_axe.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "BW"
+        image=(cardNum),image_bowarrow.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "CS"
+        image=(cardNum),icon_clothes_tool.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "TL"
+        image=(cardNum),image_telescope.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "BG"
+        image=(cardNum),image_bag.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "MP"
+        image=(cardNum),image_map.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "FD"
+        image=(cardNum),image_food.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "FR"
+        image=(cardNum),image_furs.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "MT"
+        image=(cardNum),image_metal.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceType) = "WD"
+        image=(cardNum),image_wood.png, (x),(y),(xwidth),(ywidth)
+    endif
+    ; add a down arrow signifying loss over the top whatever the item
+    image=(cardNum),icon_loss.png, {(x)-0.5}, {(y)+0.67}, {(xwidth)*0.5},{(ywidth)*0.5}
+    ; add icon marking number of players taking the effect
+    if = _NOT_ ((playersEffected) = "0")
+        image=(cardNum),icon_players_black.png, {(x)+0.9},{(y)+1.2},{(xwidth)*0.55},{(ywidth)*0.4}
+    endif
+end
 dpi=300
 oversample=2
-[all]=1-10
-[allbacks]=11-20
+[uniqueCards]=6
+[copies]=4
+[numCards]={[uniqueCards]*[copies]}
+[all]=1-[numCards]
+[allbacks]={[numCards]+1}-{[numCards]*2}
 [darkest]=#182d41
 [darker]=#20486c
 [dark]=#2c577d
@@ -11,61 +56,55 @@ oversample=2
 [grey]=#636363
 [lightgrey]=#8a8a8a
 [textcolor]=#757575
-PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,41-80
-border=rounded, [darkest], 0.5
+PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
+CARDSIZE=6.3,8.8
 rectangle=[all],0,0,100%,100%,[darker]
 ;Image of the tool
-[xtool]=1.2
-[ytool]=2
+[xtool]=1.9
+[ytool]=1.75
 [cwidth]=3.5
-image=1, image_pickaxe.png, [xtool], [ytool], [cwidth], [cwidth]
-image=2, icon_clothes_tool.png, [xtool], [ytool], [cwidth], [cwidth]
-image=3, image_trap.png, [xtool], [ytool], [cwidth], [cwidth]
-image=4, image_bowarrow.png, [xtool], [ytool], [cwidth], [cwidth]
-image=5, image_axe.png, [xtool], [ytool], [cwidth], [cwidth]
+image=[all], [file], [xtool], [ytool], [cwidth], [cwidth]
 ;rectangle behind text
 roundrect=[all],0.5,0.64,5,1,[lighter]
 ;corner image of the tool
 [xctool]=0.4
 [yctool]=0.4
 [ccwidth]=1.5
-image=1, image_pickaxe.png, [xctool], [yctool], [ccwidth], [ccwidth]
-image=2, icon_clothes_tool.png, [xctool], [yctool], [ccwidth], [ccwidth]
-image=3, image_trap.png, [xctool], [yctool], [ccwidth], [ccwidth]
-image=4, image_bowarrow.png, [xctool], [yctool], [ccwidth], [ccwidth]
-image=5, image_axe.png, [xctool], [yctool], [ccwidth], [ccwidth]
+image=[all], [file], [xctool], [yctool], [ccwidth], [ccwidth]
 ;Name of the tool
 [xtext]=2.2
 [ytext]=0.15
 [xwtext]=3
 [ywtext]=2
-font= "arial", 18, TB, [darkgrey]
-text = 1, "Pickaxe",[xtext],[ytext],[xwtext],[ywtext],center,center
-text = 2, "Clothes",[xtext],[ytext],[xwtext],[ywtext],center,center
-text = 3, "Snares",[xtext],[ytext],[xwtext],[ywtext],center,center
-font= "arial", 12, TB, [darkgrey]
-text = 4, "Bow & Arrows",[xtext],[ytext],[xwtext],[ywtext],center,center
-font= "arial", 18, TB, [darkgrey]
-text = 5, "Axe",[xtext],[ytext],[xwtext],[ywtext],center,center
+font= "arial", 16, TB, [darkgrey]
+text = [all],[name],[xtext],[ytext],[xwtext],[ywtext],center,center
 ;The costs of the tools
-[xcost1]=1.2
-[xcost2]=2.65
-[ycost]=6
-[size]=2
-image=1, image_nometal.png, [xcost1],[ycost],[size],[size]
-image=1, image_nowood.png,  [xcost2],[ycost],[size],[size]
-image=2, image_nofurs.png,  [xcost1],[ycost],[size],[size]
-image=2, image_nofurs.png,  [xcost2],[ycost],[size],[size]
-image=3, image_nofood.png,  [xcost1],[ycost],[size],[size]
-image=3, image_nometal.png, [xcost2],[ycost],[size],[size]
-image=4, image_nometal.png, [xcost1],[ycost],[size],[size]
-image=4, image_nowood.png,  [xcost2],[ycost],[size],[size]
-image=5, image_nometal.png, [xcost1],[ycost],[size],[size]
-image=5, image_nowood.png,  [xcost2],[ycost],[size],[size]
+[xcost]=0.8
+[ycost1]=2
+[ycost2]=3.6
+[size]=1.5
+lose=0,[cost1],[all],[xcost],[ycost1],[size],[size]
+lose=0,[cost2],[all],[xcost],[ycost2],[size],[size]
+;Description of the tools
+[xpos]=0.4
+[ypos]=5.3
+[sizex]=5.5
+[sizey]=3
+font= "arial", 13, TB, [darkgrey]
+roundrect=[all],[xpos],[ypos],[sizex],[sizey],[lighter]
+text=[all],[description],{[xpos]+0.15},{[ypos]+0.15},{[sizex]-0.3},{[sizey]-0.3},left,wwtop
 ;The backs of the tools
 rectangle=[allbacks],0,0,100%,100%,[darker]
 image=[allbacks], image_tools.png, 1.45, 0.5, 3, 8
 duplex=[all],[allbacks]
 Print=duplex
-display=./card_outputs_tools_fronts.png,1,10
-display=./card_outputs_tools_backs.png,11,20
+display=./card_outputs_tools_fronts.png,1,[numCards]
+display=./card_outputs_tools_backs.png,{[numCards]+1},{[numCards]*2}
+
+; border
+roundrect=[all], 0%, 0%, 100%, 100%, [darkest], EMPTY, 0.55
+roundrect=[allbacks], 0.0%, 0.0%, 100%, 100%, [darkest], EMPTY, 0.5
+
+
+; save cards with bleed
+save=[all], "./cards_numbered/card_tools{§}.png", 0, 0, 6.3, 8.8

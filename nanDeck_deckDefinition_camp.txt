@@ -1,7 +1,11 @@
 dpi=300
 oversample=2
-[all]=1-9
-[allbacks]=10-18
+[num]=9
+[all]=1-[num]
+[allbacks]={[num]+ 1}-{[num] * 2}
+[total]=1-{[num] * 2}
+
+; Colors
 [darkest]=#182d41
 [darker]=#20486c
 [dark]=#2c577d
@@ -11,8 +15,9 @@ oversample=2
 [grey]=#636363
 [lightgrey]=#757575
 [textcolor]=#000000
+
 PAGE=21,29.7,PORTRAIT,HV,#FFFFFF
-border=rounded, [grey], 0.5
+CARDSIZE=6.3,8.8
 rectangle=[all],0,0,100%,100%,[lightgrey]
 link=improvementNames.csv,name
 macro=twoCost,(cardRange),(resourceImage1),(resourceImage2)
@@ -31,13 +36,13 @@ macro=fourCost,(cardRange),(resourceImage1),(resourceImage2),(resourceImage3),(r
     image=(cardRange),(resourceImage2),2,5.9,2,2
 end
 macro=twoPlayer,(cardRange)
-    image=(cardRange),icon_player.png,0.3,7.8,0.6,1
-    image=(cardRange),icon_player.png,0.8,7.8,0.6,1
+    image=(cardRange),icon_player.png,0.3,7.7,0.6,1
+    image=(cardRange),icon_player.png,0.8,7.7,0.6,1
 end
 macro=threePlayer,(cardRange)
-    image=(cardRange),icon_player.png,0.3,7.8,0.6,1
-    image=(cardRange),icon_player.png,0.8,7.8,0.6,1
-    image=(cardRange),icon_player.png,1.3,7.8,0.6,1
+    image=(cardRange),icon_player.png,0.3,7.7,0.6,1
+    image=(cardRange),icon_player.png,0.8,7.7,0.6,1
+    image=(cardRange),icon_player.png,1.3,7.7,0.6,1
 end
 macro=fourPlayer,(cardRange)
     image=(cardRange),icon_player.png,1,7,3,3
@@ -45,6 +50,7 @@ macro=fourPlayer,(cardRange)
     image=(cardRange),icon_player.png,3,7,3,3
     image=(cardRange),icon_player.png,4,7,3,3
 end
+
 ;The front of the cards
 image=1,icon_frostCost.png,0.47,1.5,5,5
 twoCost=2,image_nowood.png,image_nowood.png
@@ -59,18 +65,22 @@ twoCost=6,image_nofurs.png,image_nofurs.png
 twoCost=7,image_nofurs.png,image_nowood.png
 threeCost=8,image_nofurs.png,image_nofurs.png,image_nometal.png
 twoCost=9,image_nofurs.png,image_nometal.png
+
 ;rectangle behind text
 roundrect=[all],-0.2,0.64,5.5,1,[darkgrey]
+
 ;Name
 font= "arial", 16, TB, [textcolor]
 text = [all], [name],0.05,0.65,5,1,center,center
 
 ;The back of the cards
 rectangle=[allbacks],0,0,100%,100%,[lightgrey]
+
 ;rectangle behind text
 POLYGON = [allbacks], 0, 0.5, 6, 6, 4, 0, [grey], [grey], 0.1
-roundrect=[allbacks],1,5.5,4,2.5, #8a8a8a,#8a8a8a,1,3,3
+roundrect=[allbacks],13.7%,63%,72%,26%, #8a8a8a,#8a8a8a,1,3,3
 roundrect=[allbacks],-0.2,0.64,5.5,1,[darkgrey]
+
 ;effect of the card
 image=10-14,icon_frostGain.png,1.5,5.2,3,3
 image=15,image_yesfood.png,1.5,5.2,3,3
@@ -90,7 +100,15 @@ image=18,image_yeswater.png,3.6,5.7,2,2
 font= "arial", 16, TB, [textcolor]
 text = [allbacks], [name],0.05,0.65,5,1,center,center
 
+
+
 duplex=[all],[allbacks]
 Print=duplex
-display=./card_outputs_camp_fronts.png,1,9
-display=./card_outputs_camp_backs.png,10,18
+display=./card_outputs_camp_fronts.png,1,[num]
+display=./card_outputs_camp_backs.png,{[num] + 1},{[num] * 2}
+
+; border
+roundrect=[total], 0%, 0%, 100%, 100%, [grey], EMPTY, 0.55
+
+; save cards with bleed
+save=[total], "./cards_numbered/card_camp{§}.png", 0, 0, 6.3, 8.8

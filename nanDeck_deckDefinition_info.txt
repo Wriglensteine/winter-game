@@ -1,7 +1,9 @@
 dpi=300
 oversample=2
-[all]=1
-[allbacks]=2
+[num]=1
+[all]=1-[num]
+[allbacks]={[num]+ 1}-{[num] * 2}
+[total]=1-{[num] * 2}
 [darkest]=#182d41
 [darker]=#20486c
 [dark]=#2c577d
@@ -11,25 +13,34 @@ oversample=2
 [grey]=#636363
 [lightgrey]=#757575
 [textcolor]=#c3c3c3
+
+[leftedge]=6%
+[rightedge]=89%
 PAGE=21,29.7,PORTRAIT,HV,#FFFFFF
-border=rounded, [darkgrey], 0.5
+CARDSIZE=6.3,8.8
 rectangle=[all],0,0,100%,100%,[grey]
 rectangle=[allbacks],0,0,100%,100%,[grey]
 font= "arial", 13,BT, [textcolor]
-text = 1, "Times of the Day",5%,5%,90%,90%,center,wwtop
+text = 1, "Times of the Day",[leftedge],5%,[rightedge],90%,center,wwtop
 font= "arial", 12,BT, [textcolor]
-text = 1, "Morning",7%,17%,90%,90%,left,wwtop
+text = 1, "Morning",[leftedge],17%,[rightedge],90%,left,wwtop
 font= "arial", 9,BT, [textcolor]
-text = 1, "Players decide which of them will go on the day's expedition and who will Remain Behind.",7%,23%,90%,90%,left,wwtop
+text = 1, "Players decide which of them will go on the day's expedition and who will Remain Behind.",[leftedge],23%,[rightedge],90%,left,wwtop
 font= "arial", 12,BT, [textcolor]
-text = 1, "Noon",7%,39%,90%,90%,left,wwtop
+text = 1, "Noon",[leftedge],39%,[rightedge],90%,left,wwtop
 font= "arial", 9,BT, [textcolor]
-text = 1, "The expedition is carried out.\13\Those remaining behind may spend up to two actions. The following cost one action:\13\ Making a tool.\13\ Recovering one exhaustion.\13\ Forage for a resource.\13\ Filter water.\13\The following cost two actions:\13\ Construct a Camp Improvement.\13\ Contribute to the Plane.",7%,45%,90%,90%,left,wwtop
+text = 1, "The expedition is carried out.\13\Those remaining behind may spend up to two actions. The following cost one action:\13\ Making a tool.\13\ Recovering one exhaustion.\13\ Forage for a resource.\13\ Filter water.\13\The following cost two actions:\13\ Construct a Camp Improvement.\13\ Contribute to the Plane.",[leftedge],45%,[rightedge],90%,left,wwtop
 
 font= "arial", 12,BT, [textcolor]
-text = 2, "Evening",7%,8%,90%,90%,left,wwtop
+text = 2, "Evening",6%,8%,90%,90%,left,wwtop
 font= "arial", 9,BT, [textcolor]
-text = 2, "The expedition returns with acquired resources.\13\The group decides on how much wood to put on the fire. Each counters one Frost from the weather and additional remove existing Frost tokens. The first wood triggers a free use of the Camps's Filterer.\13\The group then distributes food, and water. Any character not fed gains Hunger, and any not given water gains Thirst.\13\Characters then gain 1 health minus 1 for each Weakness token they possess. They die if their health reaches the red drop.",7%,14%,90%,90%,left,wwtop
+text = 2, "The expedition returns with acquired resources.\13\The group decides on how much wood to put on the fire. Each counters one Frost from the weather and additional remove existing Frost tokens. The first wood triggers a free use of the Camps's Filterer.\13\The group then distributes food, and water. Any character not fed gains Hunger, and any not given water gains Thirst.\13\Characters then gain 1 health minus 1 for each Weakness token they possess. They die if their health reaches the red drop.",[leftedge],14%,[rightedge],90%,left,wwtop
 
 display=./cards_info_output_fronts.png,1,1
 display=./cards_info_output_backs.png,2,2
+
+; border
+roundrect=[total], 0%, 0%, 100%, 100%, [darkgrey], EMPTY, 0.55
+
+; save cards with bleed
+save=[total], "./cards_numbered/card_info{§}.png", 0, 0, 6.3, 8.8
